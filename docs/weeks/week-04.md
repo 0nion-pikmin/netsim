@@ -1,5 +1,9 @@
 # Week 4 · DESIGN + BUILD: The CPU
 
+**This class moved into week 5.** We do the design and `decode()` together with the build, in one
+class: go to Week 5's page for the class and the take-home. This page stays as reference, and
+`decode` and `encode` keep their cards in this week's Code tab.
+
 Your bus and memory work. Today you design the part that uses them: a **CPU core** that fetches an
 instruction from memory, decodes it, and executes it, one clock tick at a time. The first half
 of class is the design; in the second half you build the core's first piece, `decode()`, which
@@ -94,7 +98,7 @@ light the one for its state; show its program's name and PC; a waiting core is d
 
 ### Build (30 min)
 
-6. **`decode()` (27 min, together).** In `core/isa.ts`, `TODO(week 4, decode)` inside
+6. **`decode()` (with the agent, in week 5's class).** In `core/isa.ts`, `TODO(week 4, decode)` inside
    `decode(bytes)`. Run the tests first and watch them fail:
 
    ```bash
@@ -108,6 +112,16 @@ light the one for its state; show its program's name and PC; a waiting core is d
    - Every way it can be wrong is an answer, not a crash: an unknown opcode, a register outside
      R0-R3, an address outside memory each return `{ ok: false, error }`. That's the FAULT row of
      your section 4.
+
+   With the agent (Week 5's page has how), say your approach first, then this:
+
+   ```text
+   My approach: (your words: how you split the 4 bytes, and what counts as wrong)
+
+   In core/isa.ts only, fill in TODO(week 4, decode) in decode(bytes). Don't change anything
+   outside that region, or any test. Tell me what you'll change before you change it, and explain
+   each line you write. Then run: npx vitest run tests/week-04/isa.test.ts -t "^decode "
+   ```
 
    ✅ The `decode` tests in `tests/week-04/isa.test.ts` pass. Commit: `week 4: decode`.
 
@@ -148,8 +162,8 @@ Due before next session.
 
 ## Using Codex this week
 
-The design is yours: Codex shouldn't write your note, and `decode()` is coded together in class.
-Codex is good to argue with, and can help with `encode()` at home once you've said your approach:
+The design is yours: Codex shouldn't write your note. Codex is good to argue with, and can write
+`decode()` and `encode()` once you've said your approach:
 
 | Fine to ask Codex | You must be able to explain yourself |
 |---|---|
