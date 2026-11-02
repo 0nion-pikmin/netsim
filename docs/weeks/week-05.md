@@ -99,27 +99,29 @@ In the app, open Week 5's **Agent** tab. I show this once on my screen, then you
 2. **Say your approach first,** in a sentence or two, in your own words, then add the task's prompt and
    press **Send**. The prompt is on this page, and on the task's card in the Code tab: **Send to the
    agent** puts it in the box for you.
-3. **Read each card it shows you,** then **Approve** or **Decline**. Decline is normal: tell it what
-   to do differently and why.
-4. **Read the diff.** Keep only what you can explain.
-5. **Run the task's test.** Green? Commit, one commit per task.
+3. **Read the diff.** Edits in your course folder don't ask, so the diff is where you review them.
+   Keep only what you can explain. Want something different? Tell it what, and why.
+4. **Press Commit it.** When the turn ends, the tab runs the task's tests itself and says, for example,
+   `decode: 15 tests pass. encode still to do`, with **Commit it** right there. Read the diff first, then
+   press it: one commit per task.
 
-Codex works in a **sandbox**, with the network off and `.git` read-only, so two things ask you first:
+Codex works in a **sandbox**, with the network off and `.git` read-only. Cards only appear for things
+outside the sandbox: read the card, then **Approve** or **Decline**.
 
-- A test that opens a local socket fails with `listen EPERM`. That's the sandbox, not your code. Read
-  the card that asks to run it again outside the sandbox, then approve it.
-- `git commit` asks too. Read the card and approve it, or commit from the Code tab: press **Save and
-  run its tests** on the task's card, then **Commit it**. If the card says the file changed, press
-  **Reload it from the file** first. Or commit in a terminal.
+- If a test needs a local socket, press **Run its tests** when it appears. `listen EPERM` means the
+  same thing: that's the sandbox, not your code.
+- Other ways to commit: **Save and run its tests** on the task's card in the Code tab, then **Commit
+  it**, or a commit in a terminal. If Codex runs `git commit` itself, that asks you too.
 
 **Agent tab missing, or it won't start?** On the task's card in the Code tab, press **Copy the prompt**
-(or copy it from this page), run `codex` in a terminal in your course folder, and paste it. Everything
-else is the same.
+(or copy it from this page), run `codex` in a terminal in your course folder, and paste it. Commit from the
+Code tab or a terminal. Everything else is the same.
 
 ### Build with the agent (35 min, on your own)
 
-Go in this order and get as far as you can. What you don't finish goes home. At each ✅ I ask two or
-three of you to share your screen and show **one thing you told the agent to change, and why**.
+Go in this order and get as far as you can. What you don't finish goes home. Codex is quick, about a
+minute a task in our rehearsal, so most of your time goes on reading the diff and being sure you can
+explain it. Each commit below is what **Commit it** writes for you. At each ✅ I ask two or three of you to share your screen and show **one thing you told the agent to change, and why**.
 
 5. **`decode` (about 10 min).** In `core/isa.ts`, turn 4 bytes into an instruction. Every way the
    input can be wrong is an answer, not a crash: that's the FAULT row of your section 4. Its card
@@ -217,8 +219,9 @@ three of you to share your screen and show **one thing you told the agent to cha
 
 10. **Your board: the core lights up (about 7 min).** In the app, open Week 5's **Board** tab and
     press **Start the board** (without the app: `npm run dev:all`, then
-    http://localhost:3005/board). It plays a recording of the finished computer, so its cores are
-    busy right now, even before your `execute` exists. Tell the agent what your two lines in
+    http://localhost:3005/board). Then press **play** (scroll down if you don't see the controls): the board sits at tick 0 until you
+    do. It plays a recording of the finished computer, so it runs even before your `execute` exists. The
+    core panel stays empty (`You build this in week 5`) until you write `CoreView`. Tell the agent what your two lines in
     section 9 say.
 
     - `TODO(week 5, board-cycle-step)` in `cycleStep(phase)`: map each core phase (`FETCH`,
@@ -244,8 +247,8 @@ three of you to share your screen and show **one thing you told the agent to cha
       explain each line you write. No test checks this one: I'll check it on the board.
       ```
 
-    ✅ The `cycleStep` tests pass. Commit: `week 5: board-cycle-step`. On the board, each core's step
-    lights up as the recording plays. Commit: `week 5: board-draw-core`. **Be able to explain:**
+    ✅ The `cycleStep` tests pass. Commit: `week 5: board-cycle-step`. Once `CoreView` exists, the panel
+    fills and each core's step lights up as the recording plays. Commit: `week 5: board-draw-core`. **Be able to explain:**
     which phase lights which step, and one thing on the board you told the agent to change.
 
 11. **Push (2 min).** Stop wherever you are, even halfway through a task: `git push`.
@@ -265,7 +268,7 @@ CPU shell is what turns that `read` effect into a real `mem.read` on your bus.
 
 Due before next session. It's a lot, so do it in this order: each step is what the next one needs.
 The agent can do the writing, the same way as in class: your approach first, one task at a time,
-read the diff, run its test, one commit per task. Your design note stays in your own words, and
+read the diff, press **Commit it**, one commit per task. Your design note stays in your own words, and
 explain-it-back has no AI at all.
 
 1. **Finish what class didn't reach,** in the same order as in class.
