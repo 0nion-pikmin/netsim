@@ -18,8 +18,10 @@ export function enqueue(queue: readonly Irq[], irq: Irq): Irq[] {
   // @student week=6 part=class id=irq-enqueue "Insert irq so the queue stays sorted: priority first, then arrival order"
   // TODO(week 6, irq-enqueue): Insert irq so the queue stays sorted: priority first, then arrival order
   // Tests: tests/week-06/   Guide: docs/weeks/week-06.md
-  // Until week 6 interrupts are ignored: the queue stays as it was.
-  return [...queue];
+  const next = [...queue];
+  const index = next.findIndex((entry) => entry.priority > irq.priority);
+  next.splice(index === -1 ? next.length : index, 0, irq);
+  return next;
   // @end
 }
 
